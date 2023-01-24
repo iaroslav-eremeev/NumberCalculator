@@ -15,9 +15,9 @@ public class Program {
             System.out.println();
             System.out.println(Arrays.toString(numberCalculator.getMassData(numberCalculator).get(0)) +
                     "\n" + Arrays.toString(numberCalculator.getMassData(numberCalculator).get(1)));
-            System.out.println();
-            System.out.println(numberCalculator.launchGetters(numberCalculator));
-        } catch (IllegalAccessException | InvocationTargetException e) {
+            numberCalculator.fill(10, 9, 8, 7);
+            System.out.println(Arrays.toString(numberCalculator.getDataA()));
+        } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }

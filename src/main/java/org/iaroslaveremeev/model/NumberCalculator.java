@@ -44,7 +44,6 @@ public class NumberCalculator {
      * Конструктор должен заполнить случайными числами в диапазоне от -100 до 100 только второй и третий массивы.
      * Второй массив заполняется только положительными числами, третий – отрицательными
      */
-
     public NumberCalculator(int n) {
         this.dataA = new int[n];
         Random random = new Random();
@@ -52,6 +51,29 @@ public class NumberCalculator {
         massPositive = random.ints(n,-100, -1).toArray();
         this.massNegative = new int[n];
         massNegative = random.ints(n, 1, 100).toArray();
+    }
+    /**
+     * 2.	Реализовать метод fill, который принимает на вход переменное количество аргументов
+     * типа int и производит заполнение первого массива.
+     * Корректно обработать ситуацию, когда размер переданного
+     * массива окажется меньше размера исходного
+     */
+    public void fill(int ... numbers){
+        for (int i = 0, j = this.dataA.length; i < numbers.length; i++, j--) {
+            if (j == 0) {
+                System.out.println("The dataA array is full. Only the first " + this.dataA.length +
+                        " numbers you entered will be saved in the array.");
+                break;
+            }
+            this.dataA[i] = numbers[i];
+        }
+        if (this.dataA.length > numbers.length){
+            System.out.println("The dataA array is bigger than entry. " +
+                    "The rest of it will be filled with zeros.");
+            for (int i = numbers.length; i < this.dataA.length; i++) {
+                this.dataA[i] = 0;
+            }
+        }
     }
 
     /**

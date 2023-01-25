@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-public class NumberCalculator {
+public abstract class NumberCalculator {
 
     private int[] dataA;
     private int[] massPositive;
@@ -75,6 +75,26 @@ public class NumberCalculator {
             }
         }
     }
+
+    /**
+     * 3.	Написать метод, который производит операцию над двумя целыми числами,
+     * которая пока что не определена, но вскоре будет реализована в наследниках класса
+     */
+
+    abstract int twoIntsOperation(int a, int b);
+
+    /**
+     * 4.	Написать метод result, который применяет операцию для всех элементов первого массива
+     */
+
+    public int result(){
+        int a = this.dataA[0];
+        for (int i = 1; i < this.dataA.length; i++) {
+            int b = this.dataA[i];
+            a = twoIntsOperation(a, b);
+        }
+        return a;
+    };
 
     /**
      * 5.	Написать метод, который возвращает объект такого же типа, как и объект,

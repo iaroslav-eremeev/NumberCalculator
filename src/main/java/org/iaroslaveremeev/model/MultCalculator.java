@@ -14,4 +14,5 @@ public class MultCalculator extends NumberCalculator {
     int twoIntsOperation(int a, int b) {
         return a * b;
     }
+
 }

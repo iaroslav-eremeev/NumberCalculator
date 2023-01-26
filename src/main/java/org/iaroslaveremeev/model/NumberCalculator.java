@@ -13,28 +13,20 @@ public abstract class NumberCalculator {
     private int[] massPositive;
     private int[] massNegative;
 
-    public int[] getDataA() {
-        return dataA;
-    }
+    /**
+     * 8.	Реализовать геттеры вашего класса таким образом, чтобы они возвращали точные копии ваших массивов
+     */
 
-    public void setDataA(int[] dataA) {
-        this.dataA = dataA;
+    public int[] getDataA() {
+        return Arrays.copyOf(this.dataA, this.dataA.length);
     }
 
     public int[] getMassPositive() {
-        return massPositive;
-    }
-
-    public void setMassPositive(int[] massPositive) {
-        this.massPositive = massPositive;
+        return Arrays.copyOf(this.massPositive, this.massPositive.length);
     }
 
     public int[] getMassNegative() {
-        return massNegative;
-    }
-
-    public void setMassNegative(int[] massNegative) {
-        this.massNegative = massNegative;
+        return Arrays.copyOf(this.massNegative, this.massNegative.length);
     }
 
     /**
@@ -127,12 +119,13 @@ public abstract class NumberCalculator {
      * 9.	Используя динамическую идентификацию типов,
      * написать метод, который вызывает только геттеры, начинающиеся с названия getMass
      */
-    public boolean launchGetters(NumberCalculator numberCalculator)
+    public boolean launchGetters()
             throws InvocationTargetException, IllegalAccessException {
-        Method[] methods = numberCalculator.getClass().getDeclaredMethods();
+        Method[] methods = this.getClass().getMethods(); // getDeclaredMethods() - для объявленных
+        // в данном случае при использовании getDeclaredMethods() возьмет только методы ребенка
         for (Method method : methods) {
             if (method.getName().startsWith("getMass") && method.getParameterCount() == 0) {
-                int[] array = (int[]) method.invoke(numberCalculator); // динамический вызов метода
+                int[] array = (int[]) method.invoke(this); // динамический вызов метода
                 System.out.println(Arrays.toString(array));
             }
         }

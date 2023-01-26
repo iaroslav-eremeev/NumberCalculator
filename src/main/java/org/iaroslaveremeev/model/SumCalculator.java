@@ -14,4 +14,5 @@ public class SumCalculator extends NumberCalculator {
     int twoIntsOperation(int a, int b) {
         return a + b;
     }
+
 }
